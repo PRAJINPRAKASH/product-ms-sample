@@ -1,17 +1,21 @@
 package com.productmicroservice.api.models;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 public @Data class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     @NotBlank(message = "Name can't be empty")
     private String name;
     @NotBlank(message = "Description can't be empty")
