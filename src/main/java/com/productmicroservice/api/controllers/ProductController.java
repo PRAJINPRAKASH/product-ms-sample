@@ -4,15 +4,11 @@ import com.productmicroservice.api.exceptions.ResourceNotFoundException;
 import com.productmicroservice.api.models.Product;
 import com.productmicroservice.api.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,10 +18,9 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @Cacheable(value = "products")
+
     @GetMapping("/")
     public Iterable<Product> getAllProducts() {
-        System.out.println("Products fetching from database:: " + new Date());
         return  productRepository.findAll();
     }
 
@@ -35,12 +30,10 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    @Cacheable(value = "products",key = "#id")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID ProductId)
+    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID id)
             throws ResourceNotFoundException {
-        Product Product = productRepository.findById(ProductId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + ProductId));
-        System.out.println("Products fetching from database:: " + new Date());
+        Product Product = productRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + id));
         return ResponseEntity.ok().body(Product);
     }
 
@@ -50,7 +43,6 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    @CachePut(value = "products",key = "#id")
     public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") UUID id,
                                                    @Valid @RequestBody Product productDetails) throws ResourceNotFoundException {
         Product product = productRepository.findById(id)
@@ -58,12 +50,10 @@ public class ProductController {
 
         productDetails.setId(product.getId());
         final Product updatedProduct = productRepository.save(productDetails);
-        System.out.println("Products fetching from database:: " + new Date());
         return ResponseEntity.ok(updatedProduct);
     }
 
     @DeleteMapping("/{id}")
-    @CacheEvict(value = "products",allEntries = true)
     public ResponseEntity<Product> deleteProduct(@PathVariable(value = "id") UUID id)
             throws ResourceNotFoundException {
         Product product = productRepository.findById(id)
