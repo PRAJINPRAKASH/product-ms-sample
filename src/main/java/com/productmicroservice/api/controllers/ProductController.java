@@ -1,8 +1,7 @@
 package com.productmicroservice.api.controllers;
 
-import com.productmicroservice.api.exceptions.ResourceNotFoundException;
 import com.productmicroservice.api.entity.Product;
-import com.productmicroservice.api.repositories.ProductRepository;
+import com.productmicroservice.api.exceptions.ResourceNotFoundException;
 import com.productmicroservice.api.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

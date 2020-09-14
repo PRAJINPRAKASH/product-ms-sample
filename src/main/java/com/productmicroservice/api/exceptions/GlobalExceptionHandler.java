@@ -1,7 +1,5 @@
 package com.productmicroservice.api.exceptions;
 
-import com.productmicroservice.api.exceptions.ErrorDetails;
-import com.productmicroservice.api.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
