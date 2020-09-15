@@ -12,7 +12,8 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-public @Data class Product extends DBTimestamps implements  Serializable{
+public @Data
+class Product extends DBTimestamps implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;

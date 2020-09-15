@@ -3,6 +3,7 @@ package com.techgentsia.ecomexample.productms.exceptions;
 import lombok.Data;
 
 import java.util.Date;
+
 @Data
 public class ErrorDetails {
     private Date timestamp;

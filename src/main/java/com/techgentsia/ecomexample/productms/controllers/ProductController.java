@@ -21,7 +21,7 @@ public class ProductController {
 
     @GetMapping("/")
     public List<Product> getAllProducts() {
-        return  productService.getAllProducts();
+        return productService.getAllProducts();
     }
 
     @GetMapping("/search")
@@ -43,8 +43,8 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") UUID id,
-                                                   @Valid @RequestBody Product productDetails) throws ResourceNotFoundException {
-        final Product updatedProduct = productService.updateProduct(id,productDetails);
+                                                 @Valid @RequestBody Product productDetails) throws ResourceNotFoundException {
+        final Product updatedProduct = productService.updateProduct(id, productDetails);
         return ResponseEntity.ok(updatedProduct);
     }
 

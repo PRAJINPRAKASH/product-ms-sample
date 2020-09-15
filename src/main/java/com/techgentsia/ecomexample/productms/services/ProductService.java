@@ -23,31 +23,33 @@ public class ProductService {
         productRepository.findAll().forEach(result::add);
         return result;
     }
+
     public List<Product> findProducts(String name) {
         return productRepository.findProductsByNameContains(name);
     }
 
-    @Cacheable(value = "products",key = "#id")
+    @Cacheable(value = "products", key = "#id")
     public Product getProductById(UUID id)
             throws ResourceNotFoundException {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + id));
         return product;
     }
-    @CacheEvict(value = "products",allEntries = true)
+
+    @CacheEvict(value = "products", allEntries = true)
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    @CacheEvict(value = "products",allEntries = true)
-    public Product updateProduct(UUID id,Product productDetails) throws ResourceNotFoundException {
+    @CacheEvict(value = "products", allEntries = true)
+    public Product updateProduct(UUID id, Product productDetails) throws ResourceNotFoundException {
 
         productDetails.setId(getProductById(id).getId());
         final Product updatedProduct = productRepository.save(productDetails);
         return updatedProduct;
     }
 
-    @CacheEvict(value = "products",allEntries = true)
+    @CacheEvict(value = "products", allEntries = true)
     public void deleteProduct(UUID id) {
         productRepository.deleteById(id);
     }
