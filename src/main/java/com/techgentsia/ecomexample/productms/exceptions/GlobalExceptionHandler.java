@@ -1,4 +1,4 @@
-package com.productmicroservice.api.exceptions;
+package com.techgentsia.ecomexample.productms.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

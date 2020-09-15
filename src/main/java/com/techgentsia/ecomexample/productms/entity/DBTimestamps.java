@@ -1,4 +1,4 @@
-package com.productmicroservice.api.entity;
+package com.techgentsia.ecomexample.productms.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

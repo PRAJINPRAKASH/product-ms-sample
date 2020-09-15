@@ -1,8 +1,8 @@
-package com.productmicroservice.api.services;
+package com.techgentsia.ecomexample.productms.services;
 
-import com.productmicroservice.api.entity.Product;
-import com.productmicroservice.api.exceptions.ResourceNotFoundException;
-import com.productmicroservice.api.repositories.ProductRepository;
+import com.techgentsia.ecomexample.productms.repositories.ProductRepository;
+import com.techgentsia.ecomexample.productms.entity.Product;
+import com.techgentsia.ecomexample.productms.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

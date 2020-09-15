@@ -1,4 +1,4 @@
-package com.productmicroservice.api.entity;
+package com.techgentsia.ecomexample.productms.entity;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.productmicroservice.api;
+package com.techgentsia.ecomexample.productms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
