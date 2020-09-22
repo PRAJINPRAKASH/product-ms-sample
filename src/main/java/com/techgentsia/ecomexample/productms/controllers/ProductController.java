@@ -30,8 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID id)
-            throws ResourceNotFoundException {
+    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") UUID id) throws ResourceNotFoundException {
         Product Product = productService.getProductById(id);
         return ResponseEntity.ok().body(Product);
     }
